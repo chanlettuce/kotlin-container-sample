@@ -1,0 +1,92 @@
+// If you want to run as a non-root user in the container, see .devcontainer/docker-compose.yml.
+{
+  "name": "Docker in Docker Compose",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "docker-in-docker",
+  "workspaceFolder": "/workspace",
+
+  // Use 'settings' to set *default* container specific settings.json values on container create.
+  // You can edit these settings after create using File > Preferences > Settings > Remote.
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "remote.extensionKind": {
+      "ms-azuretools.vscode-docker": "workspace"
+    },
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": false
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": false
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": false
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": false
+    },
+    // フォーマッタの設定
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    // Javaの設定
+    "java.home": "/work/jdk/amazon-corretto-11.0.4.11.1-linux-x64",
+    "java.jdt.ls.vmargs": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication -javaagent:/work/lombok.jar -Xbootclasspath/a:/work/lombok.jar",
+    // Linterの設定
+    "eslint.autoFixOnSave": true,
+    "tslint.autoFixOnSave": true,
+    // ファイル形式の設定
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.exclude": {
+      "**/.classpath": true,
+      "**/.factorypath": true,
+      "**/.project": true,
+      "**/.settings": true
+    },
+    // Git関連の設定
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true
+  },
+
+  // Uncomment the next line if you want start specific services in your Docker Compose config.
+  // "runServices": [],
+
+  // Uncomment the next line if you want to keep your containers running after VS Code shuts down.
+  // "shutdownAction": "none",
+
+  // Uncomment the next line to run commands after the container is created.
+  "postCreateCommand": "docker --version",
+
+  // Add the IDs of extensions you want installed when the container is created in the array below.
+  "extensions": [
+    "ms-azuretools.vscode-docker",
+    // Java系
+    "vscjava.vscode-java-pack",
+    "Pivotal.vscode-boot-dev-pack",
+    "GabrielBB.vscode-lombok",
+    "naco-siren.gradle-language",
+    // JS/TS系
+    "dbaeumer.vscode-eslint",
+    "eg2.tslint",
+    "esbenp.prettier-vscode",
+    "stevencl.addDocComments",
+    // その他言語系
+    "DotJoshJohnson.xml",
+    "codezombiech.gitignore"
+  ]
+}

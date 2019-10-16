@@ -1,0 +1,26 @@
+version: '3'
+services:
+  docker-in-docker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        jdk_version: 11.0.4.11.1
+    # environment:
+    #   - JAVA_HOME=/work/jdk/amazon-corretto-11.0.4.11.1-linux-x64
+    volumes:
+      - ..:/workspace
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: sleep infinity
+  db:
+    image: postgres:11.5
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=kotlin
+      - POSTGRES_USER=kotlin
+      - POSTGRES_PASSWORD=kotlin
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
