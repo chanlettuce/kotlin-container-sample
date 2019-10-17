@@ -51,8 +51,7 @@ RUN apt-get update \
   && apt-get clean -y \
   && rm -rf /var/lib/apt/lists/*
 
-# Switch back to dialog for any ad-hoc use of apt-get
-ENV DEBIAN_FRONTEND=
+# ========== ここから ==========
 
 # Amazon CorrettoとLombokのインストール
 ARG jdk_version="11.0.4.11.1"
@@ -73,3 +72,8 @@ RUN \
   rm -rf /var/lib/apt/lists/*
 
 ENV JAVA_HOME=/work/jdk/amazon-corretto-${jdk_version}-linux-x64
+
+# ========== ここまで ==========
+
+# Switch back to dialog for any ad-hoc use of apt-get
+ENV DEBIAN_FRONTEND=""
